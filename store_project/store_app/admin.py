@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib import admin
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -27,7 +29,7 @@ class WarehouseAccountAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not obj.pk:
             # Регистрация нового пользователя
-            name = obj.name
+            name = uuid.uuid4()
             password = User.objects.make_random_password()
 
             wh_api.create_user(name=name,

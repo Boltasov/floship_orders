@@ -5,12 +5,13 @@ import posixpath
 def create_user(name, password, wh_url, users_path):
     user_creds = {
         "username": name,
-        "password": password
+        "password": password,
     }
 
     create_wh_user_url = posixpath.join(wh_url, users_path)
 
     response = requests.post(create_wh_user_url, data=user_creds)
+    print(response.request.body)
     response.raise_for_status()
     return response.status_code
 
@@ -18,7 +19,7 @@ def create_user(name, password, wh_url, users_path):
 def get_token(name, password, wh_url, get_token_path):
     user_creds = {
         "username": name,
-        "password": password
+        "password": password,
     }
 
     auth_wh_url = posixpath.join(wh_url, get_token_path)
@@ -34,7 +35,7 @@ def create_store_account(wh_url, accounts_path, token, store_token):
     create_store_account_url = posixpath.join(wh_url, accounts_path)
 
     headers = {
-        'Authorization': token
+        'Authorization': f'Token {token}'
     }
     store = {
         'name': 'store_1',
@@ -42,6 +43,8 @@ def create_store_account(wh_url, accounts_path, token, store_token):
     }
 
     response = requests.post(create_store_account_url, headers=headers, data=store)
+    print('Header:', response.request.headers)
+    print('Body:', response.request.body)
     response.raise_for_status()
     return response.status_code
 
@@ -53,6 +56,5 @@ def create_order(order_serialized, wh_url, orders_path, token):
     }
 
     response = requests.post(wh_url, headers=headers, data=order_serialized.data)
-    print(response.text)
     response.raise_for_status()
     return response.status_code
