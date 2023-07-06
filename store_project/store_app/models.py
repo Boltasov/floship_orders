@@ -2,6 +2,14 @@ from django.db import models
 import uuid
 
 
+class WarehouseAccount(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    token = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class StoreOrder(models.Model):
     STATUSES = [
         (1, 'New'),
@@ -18,6 +26,7 @@ class StoreOrder(models.Model):
         )
     order_number = models.CharField(max_length=255)
     status = models.IntegerField(choices=STATUSES, default=1)
+    warehouse_account = models.ForeignKey(WarehouseAccount, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.order_number

@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from rest_framework.routers import SimpleRouter
 
-from wh_app.views import WarehouseOrderView
+from wh_app.views import WarehouseOrderView, StoreAccountView
 
 router = SimpleRouter()
 
 router.register('api/orders', WarehouseOrderView)
+router.register('api/stores', StoreAccountView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

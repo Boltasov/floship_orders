@@ -1,8 +1,6 @@
-from copy import deepcopy
-
 from rest_framework.serializers import ModelSerializer, UUIDField
 
-from wh_app.models import WarehouseOrder
+from .models import WarehouseOrder, StoreAccount
 
 
 class WarehouseOrderSerializer(ModelSerializer):
@@ -10,10 +8,16 @@ class WarehouseOrderSerializer(ModelSerializer):
 
     class Meta:
         model = WarehouseOrder
-        fields = '__all__'
+        fields = ['id', 'order_number', 'status']
 
 
 class WarehouseStatusSerializer(ModelSerializer):
     class Meta:
         model = WarehouseOrder
         fields = ['status']
+
+
+class StoreAccountSerializer(ModelSerializer):
+    class Meta:
+        model = StoreAccount
+        fields = ['name', 'token']

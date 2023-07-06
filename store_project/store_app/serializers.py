@@ -1,10 +1,11 @@
 from rest_framework.serializers import ModelSerializer, UUIDField
 
-from store_app.models import StoreOrder
+from .models import StoreOrder
 
 
 class StoreOrderSerializer(ModelSerializer):
+    id = UUIDField()
 
     class Meta:
         model = StoreOrder
-        fields = '__all__'
+        fields = ['id', 'order_number', 'status']
