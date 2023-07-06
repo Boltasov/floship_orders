@@ -5,4 +5,9 @@ from .models import StoreOrder
 
 @admin.register(StoreOrder)
 class StoreOrderAdmin(admin.ModelAdmin):
-    readonly_fields = ["order_number", "status"]
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ['order_number', 'status']
+        else:
+            return []
+
