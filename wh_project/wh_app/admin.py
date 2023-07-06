@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from wh_app.models import WarehouseOrder
+from .models import WarehouseOrder
 
 
 @admin.register(WarehouseOrder)

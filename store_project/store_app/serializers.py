@@ -1,6 +1,6 @@
-from rest_framework.serializers import ModelSerializer, UUIDField
+from rest_framework.serializers import ModelSerializer
 
-from store_app.models import StoreOrder
+from .models import StoreOrder
 
 
 class StoreOrderSerializer(ModelSerializer):

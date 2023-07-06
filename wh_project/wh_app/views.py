@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 
-from wh_app.models import WarehouseOrder
-from wh_app.serializers import WarehouseOrderSerializer
+from .models import WarehouseOrder
+from .serializers import WarehouseOrderSerializer
 
 
 class WarehouseOrderView(ModelViewSet):

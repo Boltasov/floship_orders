@@ -1,11 +1,10 @@
-from django.db.models.signals import post_save, pre_delete
-from django.contrib.auth.models import User
-from django.dispatch import receiver
-
 import requests
-from os import environ
 import posixpath
+from os import environ
 from dotenv import load_dotenv
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from .models import WarehouseOrder
 from .serializers import WarehouseStatusSerializer

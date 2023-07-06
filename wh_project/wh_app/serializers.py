@@ -1,8 +1,6 @@
-from copy import deepcopy
-
 from rest_framework.serializers import ModelSerializer, UUIDField
 
-from wh_app.models import WarehouseOrder
+from .models import WarehouseOrder
 
 
 class WarehouseOrderSerializer(ModelSerializer):

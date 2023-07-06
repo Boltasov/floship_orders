@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 
-from store_app.models import StoreOrder
-from store_app.serializers import StoreOrderSerializer
+from .models import StoreOrder
+from .serializers import StoreOrderSerializer
 
 
 class StoreOrderView(ModelViewSet):
