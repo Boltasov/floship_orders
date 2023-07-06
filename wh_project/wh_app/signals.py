@@ -20,7 +20,11 @@ def send_order(sender, instance, created, **kwargs):
         api_path = 'api/orders/'
         order_url = posixpath.join(store_url, api_path, f'{str(instance.id)}/')
 
+        headers = {
+            'Authorization': 'Token da41cba48c949848464dd3f050cecfef4eb32bbb'
+        }
+
         order_serialized = WarehouseStatusSerializer(instance)
 
-        response = requests.patch(order_url, data=order_serialized.data)
+        response = requests.patch(order_url, headers=headers, data=order_serialized.data)
         response.raise_for_status()

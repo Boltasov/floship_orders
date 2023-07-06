@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
 from rest_framework.routers import SimpleRouter
 
 from store_app.views import StoreOrderView
@@ -26,6 +26,8 @@ router.register('api/orders', StoreOrderView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'api/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
 
 urlpatterns += router.urls
